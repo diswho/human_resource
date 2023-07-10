@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  Route,
+  Routes,
+  BrowserRouter as Router,
+  NavLink,
+} from 'react-router-dom';
+import HomePage from './home/HomePage';
+import SummaryPage from './summary/SummaryPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Router>
+      <header className="sticky">
+        <span className="logo"></span>
+        <NavLink to="/" className="button rounded">
+          <span className="icon-home"></span>
+          Home
+        </NavLink>
+        <NavLink to="/summary" className="button rounded">
+          Summary Page
+        </NavLink>
       </header>
-    </div>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/summary" element={<SummaryPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
